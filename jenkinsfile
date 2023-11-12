@@ -3,7 +3,7 @@ pipeline{
         label "thisbetterwork3"
     }
     tools {
-        jdk 'Java17'
+        jdk 'jdk-17.0.9+9.1'
         maven 'Maven3'
     }
 
