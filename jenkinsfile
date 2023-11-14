@@ -1,46 +1,35 @@
-pipeline{
-    agent{
-        label "mavenxtemplate"
-    }
+pipeline {
+    agent any
     tools {
         jdk 'jdk-17'
         maven 'Maven3'
     }
 
-    stages{
-        stage("Cleanup Workspace"){
+    stages {
+        stage("Cleanup Workspace") {
             steps {
                 cleanWs()
             }
-
         }
-    
-        stage("Checkout from SCM"){
+
+        stage("Checkout from SCM") {
             steps {
                 git branch: 'main', url: 'https://github.com/islamtoghuj/second.git'
             }
-
         }
 
-        stage("Build app"){
+        stage("Build app") {
             steps {
                 echo "testing build"
                 sh 'mvn clean package'
             }
-
         }
 
-        stage("Test app"){
+        stage("Test app") {
             steps {
                 echo "testing test"
                 sh 'mvn test'
             }
-
         }
-
-
-        
-        }
-
     }
-
+}
